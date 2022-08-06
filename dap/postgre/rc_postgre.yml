@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: dap-rc
+  namespace: dap
+spec:                     
+  replicas: 1
+  selector:
+    rc-name: rc-postgresql 
+  template:               # pod definition starts from here
+    metadata:
+      name: pod-postgresql
+      labels:
+        rc-name: rc-postgresql
+    spec:
+      containers:
+        - name: container-postgresql
+          image: postgres:11
+          ports:
+            - containerPort: 90
+          

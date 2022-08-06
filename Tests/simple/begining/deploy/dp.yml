@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep4
+  namespace: ns4
+spec:                     
+  replicas: 4
+  selector:
+    matchLabels:
+      mykey: myapp
+  template:               # pod definition starts from here
+    metadata:
+      name: pod4
+      labels:
+        mykey: myapp
+    spec:
+      containers:
+        - name: container4
+          #image: melikktly/spring-demo:2.0.0
+          #image: melikktly/demo:2.0.0
+          image: sadedil/simpleinfoserver:2.0.0
+          ports:
+          - containerPort: 80

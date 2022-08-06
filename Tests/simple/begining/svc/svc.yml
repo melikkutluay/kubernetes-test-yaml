@@ -1,0 +1,14 @@
+apiVersion: v1              #service definition starts from here
+kind: Service
+metadata:
+  name: svc-dap
+  namespace: dap
+spec:
+  type: LoadBalancer            # Try LoadBalancer if you deploy this yaml to any cloud service
+  selector:
+    rc-name: rc-dap
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80                                  # The application's port, running in the container
+    targetPort: 8080                         # By default the targetPort will be set to the same value as the port fields

@@ -1,0 +1,45 @@
+﻿az aks get-credentials -g rg-udemy -n k8s-dap
+
+minikube delete --all --purge
+
+
+minikube start --driver=hyperv 
+
+kubectl get pods --watch
+kubectl get pods -o wide
+
+-> kubectl config set-context minikube --namespace=ns3
+
+-> kubectl scale rc rc2 --replicas=1
+
+SERVİCE => Pod 'lar arasında iletişim kurmaya ve yazılan pod'lara kubernetes'ın dışından erişilmesini sağlar
+
+LABEL => Servis'in pod'lar ile araşında ki ilişkiyi kurarken key-value şeklinde etiketler yaratır ve servis ile pod arasındaki ilişkiyi kurmayı sağlar
+
+SERVİCE 
+
+	service type 
+			
+			-> Cluster Ip
+			-> Node Port
+			-> Road Balancer
+			
+-> kubectl describe svc service-for-label-1
+
+DEPLOYMENT
+	minReadySecond => Response verme süresei
+	maxUnavailable => Birden öldürülecek olan pod'ların sayısını söylüyor
+	macSurge => Birden oluşturulacak olan Pod'ların sayısını söylüyor
+	deployment type
+		
+		-> RollingUpdate => The Deployment update Pods 
+		-> Recreate => All exist pods
+		
+		
+AZURE KUBERNETES SERVİCE
+	az login
+	az aks get-credentials -g rg-udemy -n k8s-udemy
+	kubectl config use-context minikube
+	kubectl get nodes
+	rc3
+	svc3
